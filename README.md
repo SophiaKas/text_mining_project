@@ -31,6 +31,7 @@ Just run main and select the methods/models you want to run. Sample size can be 
      macro avg       0.86      0.86      0.86     10000
   weighted avg       0.86      0.86      0.86     10000
 
+
 #### Observations:
 SVM always seems to take the longest out of the options while logistic regression is decently fast and provides basically the same accuracy.
 Random forest performs the worst.
