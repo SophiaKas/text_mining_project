@@ -11,7 +11,9 @@ Just run main and select the methods/models you want to run. Sample size can be 
 
 ### Bag of Words:
 Logistic Regression (Bag of Words) Accuracy: 0.8738
+
 Random Forest (Bag of Words) Accuracy: 0.8495
+
 SVM (Bag of Words) Accuracy: 0.8719
 
 
