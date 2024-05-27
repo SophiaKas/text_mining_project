@@ -22,7 +22,6 @@ Just run main and select the methods/models you want to run. Sample size can be 
 ### Topic Modeling:
   Sentiment Classification Accuracy: 0.8576
                 precision    recall  f1-score   support
-  
       negative       0.86      0.86      0.86      4942
       positive       0.86      0.86      0.86      5058
   
