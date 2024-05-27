@@ -19,6 +19,17 @@ Just run main and select the methods/models you want to run. Sample size can be 
 - Random Forest (tf-idf) Accuracy: 0.8513
 - SVM (tf-idf) Accuracy: 0.8991
 
+### Topic Modeling:
+  Sentiment Classification Accuracy: 0.8576
+                precision    recall  f1-score   support
+  
+      negative       0.86      0.86      0.86      4942
+      positive       0.86      0.86      0.86      5058
+  
+      accuracy                           0.86     10000
+     macro avg       0.86      0.86      0.86     10000
+  weighted avg       0.86      0.86      0.86     10000
+
 #### Observations:
 SVM always seems to take the longest out of the options while logistic regression is decently fast and provides basically the same accuracy.
 Random forest performs the worst.
