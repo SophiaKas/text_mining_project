@@ -14,6 +14,14 @@ Just run main and select the methods/models you want to run. Sample size can be 
 - Random Forest (Bag of Words) Accuracy: 0.8495
 - SVM (Bag of Words) Accuracy: 0.8719
 
+### TF-IDF:
+- Logistic Regression (tf-idf) Accuracy: 0.8934
+- Random Forest (tf-idf) Accuracy: 0.8513
+- SVM (tf-idf) Accuracy: 0.8991
+
+#### Observations:
+SVM always seems to take the longest out of the options while logistic regression is decently fast and provides basically the same accuracy.
+Random forest performs the worst.
 
 ## Issues:
 - Clustering seems to behave weirdly for now. Unsure if this is normal or the code is wrong?
