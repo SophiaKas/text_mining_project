@@ -60,7 +60,19 @@ Created for a group assignment as part of a Machine learning and Data mining cou
 
 ## To-do:
 
+  Implement word2vec (Document Embedding) 
+  Improve Preprocessing (Add Lemmatization and see if stemming/lemmatization/stemming + lematization works best) - IN PROGRESS!
+  Check what is NER and implement it - IN PROGRESS!
+
 - Fix K-means clustering
-- Visualization
+- Visualization - IN PROGRESS!
 - Hierarchical clustering
+  
 - Explanation for all the implemented steps - right now there are only sparse comments
+
+ ## What is important for presentation (Stuff he mentioned):
+
+  1) Word clouds (for positive and negative decisions)
+  2) Clustering 
+  3) Classification including confusion matrix
+  4) T.SNE
