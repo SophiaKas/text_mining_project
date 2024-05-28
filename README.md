@@ -2,7 +2,7 @@
 
 Based on: [Sentiment Analysis of IMDB Movie Reviews](https://www.kaggle.com/code/lakshmi25npathi/sentiment-analysis-of-imdb-movie-reviews)
 
-Created for a group assignment as part of the OTH Regensburg course "Foundations of Machine Learning for Computer Science, Business, and Medicine: A Practical Journey with Orange Data Mining and Python"
+Created for a group assignment as part of a Machine learning and Data mining course
 
 ## Usage
 
