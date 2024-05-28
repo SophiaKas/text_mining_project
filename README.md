@@ -50,3 +50,10 @@ Random forest performs the worst.
 
 ## Issues:
 - Clustering seems to behave weirdly for now. Unsure if this is normal or the code is wrong?
+
+
+## To-do:
+- Fix K-means clustering
+- Visualiziation
+- Hierarchical clustering
+- Explanation for all the implemented steps - right now there are only sparse comments
