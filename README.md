@@ -23,6 +23,20 @@ Created for a group assignment as part of a Machine learning and Data mining cou
 - Logistic Regression (TF-IDF) Accuracy: 0.8934
 - Random Forest (TF-IDF) Accuracy: 0.8513
 - SVM (TF-IDF) Accuracy: 0.8991
+  
+### Word2Vec:
+Logistic Regression Accuracy: 0.8443
+Logistic Regression Precision: 0.8420425193721438
+Logistic Regression Recall: 0.8476
+
+Random Forest Accuracy: 0.805
+Random Forest Precision: 0.801621835443038
+Random Forest Recall: 0.8106
+
+SVM Accuracy: 0.8571
+SVM Precision: 0.8534943575529598
+SVM Recall: 0.8622
+
 
 ### Topic Modeling:
 
