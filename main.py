@@ -15,7 +15,7 @@ default_file_path = './IMDB Dataset.csv'
 if os.path.exists(default_file_path):
     imdb_data = pd.read_csv(default_file_path)
 else:
-    user_file_path = input("File not found. provide new path: ")
+    user_file_path = input("File not found. Provide new path: ")
     
     if os.path.exists(user_file_path):
         imdb_data = pd.read_csv(user_file_path)
@@ -30,6 +30,10 @@ print("2. Tf-idf")
 print("3. Topic Modeling")
 print("4. Clustering")
 version = input("Enter number: ")
+
+if version not in {'1', '2', '3', '4'}:
+    print("Invalid option. Choose 1, 2, 3, or 4.")
+    exit()
 
 # Prompt user to choose sampling size
 print("Choose the sampling method:")
@@ -46,7 +50,7 @@ if sampling_method == "1":
     # Split the data into training and testing sets
     train_data = imdb_data.sample(frac=0.8, random_state=None)
     test_data = imdb_data.drop(train_data.index)
-else: # 0.8 / 0.2 split
+else:  # 0.8 / 0.2 split
     train_data, test_data = train_test_split(imdb_data, test_size=0.2, random_state=None)
 
 # Extraction of reviews and sentiments
@@ -60,17 +64,16 @@ train_reviews = train_reviews.apply(preprocess_text)
 test_reviews = test_reviews.apply(preprocess_text)
 
 if version == "1":
-    print("Choose the learning models to run 'lr,rf,svm' or 'all'):")
+    print("Choose the learning models to run ('lr,rf,svm' or 'all'):")
     models = input("Enter the model: ").split(',')
-    run_bag_of_words(train_reviews, train_sentiments, test_reviews, test_sentiments, models)
+    run_bag_of_words(train_reviews.tolist(), train_sentiments.tolist(), test_reviews.tolist(), test_sentiments.tolist(), models)  # converting everything to lists
 elif version == "2":
-    print("Choose the learning models to run 'lr,rf,svm' or 'all'):")
+    print("Choose the learning models to run ('lr,rf,svm' or 'all'):")
     models = input("Enter the model: ").split(',')
-    run_tf_idf(train_reviews, train_sentiments, test_reviews, test_sentiments, models)
+    run_tf_idf(train_reviews.tolist(), train_sentiments.tolist(), test_reviews.tolist(), test_sentiments.tolist(), models)  # converting everything to lists
 elif version == "3":
     run_topic_modeling(train_data, test_data)
-# Clustering behaves weirdly? Is this to be expected? incredibly low accuracy might just be wrongly implemented
 elif version == "4":
-    run_clustering(train_reviews, train_sentiments, test_reviews, test_sentiments)
+    run_clustering(train_reviews.tolist(), train_sentiments.tolist(), test_reviews.tolist(), test_sentiments.tolist())  # converting everything to lists
 else:
-    print("choose 1, 2, 3, or 4.")
+    print("Choose 1, 2, 3, or 4.")

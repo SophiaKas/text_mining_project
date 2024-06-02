@@ -1,31 +1,56 @@
+import numpy as np
 from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.linear_model import LogisticRegression
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.svm import SVC
-from sklearn.metrics import accuracy_score
+from typing import List, Dict, Any
+from model_training import train_and_evaluate, get_models
+from visualization import plot_metrics_comparison
+from explanations import explain_with_lime
 
-def run_bag_of_words(train_reviews, train_sentiments, test_reviews, test_sentiments, models):
+def run_bag_of_words(train_reviews: List[str], train_sentiments: List[str], 
+                     test_reviews: List[str], test_sentiments: List[str], models: List[str]) -> None:
+    """
+    Train and evaluate models using Bag of Words representation.
+
+    Args:
+        train_reviews (List[str]): List of training reviews.
+        train_sentiments (List[str]): List of training sentiments.
+        test_reviews (List[str]): List of testing reviews.
+        test_sentiments (List[str]): List of testing sentiments.
+        models (List[str]): List of models to train and evaluate.
+    """
     vectorizer = CountVectorizer()
-    X_train = vectorizer.fit_transform(train_reviews)
-    X_test = vectorizer.transform(test_reviews)
-    
-    if 'lr' in models or 'all' in models:
-        # Logistic Regression model
-        lr_model = LogisticRegression(max_iter=1000) #tried 1000 iteration since there are usually warnings if I dont do this
-        lr_model.fit(X_train, train_sentiments)
-        lr_predictions = lr_model.predict(X_test)
-        print("Logistic Regression (Bag of Words) Accuracy:", accuracy_score(test_sentiments, lr_predictions))
-    
-    if 'rf' in models or 'all' in models:
-        # Random Forest model
-        rf_model = RandomForestClassifier()
-        rf_model.fit(X_train, train_sentiments)
-        rf_predictions = rf_model.predict(X_test)
-        print("Random Forest (Bag of Words) Accuracy:", accuracy_score(test_sentiments, rf_predictions))
-    
-    if 'svm' in models or 'all' in models:
-        # SVM model
-        svm_model = SVC()
-        svm_model.fit(X_train, train_sentiments)
-        svm_predictions = svm_model.predict(X_test)
-        print("SVM (Bag of Words) Accuracy:", accuracy_score(test_sentiments, svm_predictions))
+    try:
+        X_train = vectorizer.fit_transform(train_reviews)
+        X_test = vectorizer.transform(test_reviews)
+    except Exception as e:
+        print(f"Error during vectorization: {e}")
+        return
+
+    metrics = {
+        'model': [],
+        'accuracy': [],
+        'recall': [],
+        'precision': []
+    }
+
+    models_dict = get_models()
+    valid_models = set(models_dict.keys()).union({'all'})
+
+    if not all(model in valid_models for model in models):
+        raise ValueError(f"Invalid model specified. Choose from {valid_models}")
+
+    trained_models = {}
+    if 'all' in models:
+        for model_key, model in models_dict.items():
+            success = train_and_evaluate(model, model_key, X_train, train_sentiments, X_test, test_sentiments, metrics, vectorizer)
+            if success:
+                trained_models[model_key] = model
+    else:
+        for model_key in models:
+            if model_key in models_dict:
+                model = models_dict[model_key]
+                success = train_and_evaluate(model, model_key, X_train, train_sentiments, X_test, test_sentiments, metrics, vectorizer)
+                if success:
+                    trained_models[model_key] = model
+
+    explain_with_lime(vectorizer, trained_models, test_reviews)
+    plot_metrics_comparison(metrics)

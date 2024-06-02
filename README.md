@@ -9,6 +9,7 @@ Created for a group assignment as part of a Machine learning and Data mining cou
 - Run `pip install -r requirements.txt` to install all requirements. Some nltk parts might need to be installed manually; check the terminal.
 - Run `main.py`
 - Select method, sample size, model
+- LIME explanation gets created and shown in the notebook as html
 
 ## Results (full data set - 0.8/0.2 split):
 
@@ -74,17 +75,10 @@ SVM Recall: 0.8622
 
 ## To-do:
 
-- Implement word2vec (Document Embedding)
-
 - Improve Preprocessing (Add Lemmatization and see if stemming/lemmatization/stemming + lematization works best) - IN PROGRESS!
 
 -  Check what is NER and implement it - IN PROGRESS!
 
-- Fix K-means clustering
-- Visualization - IN PROGRESS!
-- Hierarchical clustering
-  
-- Explanation for all the implemented steps - right now there are only sparse comments
 
  ## What is important for presentation (Stuff he mentioned):
 
