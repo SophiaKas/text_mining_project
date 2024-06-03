@@ -8,3 +8,4 @@ __pycache__/tf_idf.cpython-312.pyc
 __pycache__/topic_modeling.cpython-312.pyc
 __pycache__/tsne_visualization.cpython-312.pyc
 __pycache__/visualization.cpython-312.pyc
+*.html
